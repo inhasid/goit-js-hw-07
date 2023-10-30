@@ -30,23 +30,22 @@ function handleClick(event) {
   }
     event.preventDefault();
     const originalImg = event.target.dataset.source;
-    const instance = basicLightbox.create(`
-  <div class="modal">
-    <img src="${originalImg.original}" alt="${originalImg.description}"/>
-  </div>
+    const instance = basicLightbox.create(`  
+    <img src="${originalImg}"/>
   `);
   instance.show();
   document.addEventListener("keydown", onEscKeyPress);
-}
-
-function onEscKeyPress(event) {
-  if (event.code === "Escape") {
-    instance.close();
-    document.removeEventListener(
-      "keydown",
-      onEscKeyPress
-    );
+  function onEscKeyPress(event) {
+    if (event.code === "Escape") {
+      instance.close();
+      document.removeEventListener(
+        "keydown",
+        onEscKeyPress
+      );
+    }
   }
 }
+
+
 
 console.log(galleryItems);
